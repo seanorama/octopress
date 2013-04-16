@@ -7,9 +7,9 @@ rvm:
   - 1.9.2
 before_install:
   - sudo apt-get update 
-  - sudo apt-get install python-swiftclient
+  - sudo apt-get install python-pip
 install:
-  - pip install --use-mirrors python-swiftclient
+  - pip install python-swiftclient --use-mirrors
 script:
   - bundle exec rake install
   - bundle exec rake generate
