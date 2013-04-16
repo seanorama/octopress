@@ -15,3 +15,13 @@ after_script:
 env:
   global:
   - OS_AUTH_URL=https://lon.identity.api.rackspacecloud.com/v1.0 
+  - secure: ! '2Jr8i32d7q1/etoFvksiUvHSyfEdU3MRzDoyrIoqGHMI6GccT88bj9vJnS3Q
+
+      Rt9ltsCw+3ZzWd4K9gRHg2aAc24GCUH2GEq0z7LrVD+zY6K1VpxTI/DFKZHq
+
+      w3E2uc/94wSE2fL/sR1xNIMp5M/PJqaZIfiw2GU13wL4yYImrpg='
+  - secure: ! '1fKQtRY0+OMvt7vroney/svLOaph6fg8qs764bgxvbvAox4Jr0PZbGvj2Hoa
+
+      rc5Ktgo/mESMI1HImQDz44WkFb4oOpzy5IE8RY7H2LxZs/tOcweYw+yqwbMi
+
+      qiMRoEFUGB+R8xL5H2gs4SQhhAZntlF7wARW5aom/pAnA+Ubr+o='
