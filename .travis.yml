@@ -9,7 +9,6 @@ rvm:
 install:
 - pip install python-swiftclient --use-mirrors --install-option="--user"
 script:
-- rbenv rehash
 - bundle install
 - bundle exec rake install
 - bundle exec rake generate
