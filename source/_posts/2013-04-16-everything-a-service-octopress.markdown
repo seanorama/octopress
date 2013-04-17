@@ -76,6 +76,14 @@ To help me [Just Start Writing](/blog/2013/04/16/just-start/) I built this blog.
 #### Travis CI notifications on IRC
  - TODO: Own a Freenode channel
  - Update .travis.yml with notification settings http://about.travis-ci.org/docs/user/notifications/#IRC-notification
+```
+11:54 -!- travis-ci [~travis-ci@ec2-50-17-148-215.compute-1.amazonaws.com] has joined ##seano
+11:54 < travis-ci> [travis-ci] seanorama/octopress#28 (master - ec91eff : Sean Roberts): The build passed.
+11:54 < travis-ci> [travis-ci] Change view : https://github.com/seanorama/octopress/compare/e6aab22cd442...ec91effb3c12
+11:54 < travis-ci> [travis-ci] Build details : http://travis-ci.org/seanorama/octopress/builds/6412185
+11:54 -!- travis-ci [~travis-ci@ec2-50-17-148-215.compute-1.amazonaws.com] has left ##seano []
+```
+ 
 
 #### Prose.io
  - Write posts & pages in http://prose.io/ . Nuff said.
