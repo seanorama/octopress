@@ -7,6 +7,7 @@ Author: Sean Roberts
 published: true
 categories: 
 ---
-You always have those things that you think "I should just start".
 
-A weblog has been itching at my brain for more than a decade. Now I'm just going to start.
+There are always those ideas that we think about but never start. For more than a decade, I've thought of writing in a public forum, such as a weblog.
+
+Today, I will "Just Start".
