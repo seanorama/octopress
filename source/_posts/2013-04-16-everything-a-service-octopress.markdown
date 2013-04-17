@@ -73,21 +73,16 @@ To help me [Just Start Writing](/blog/2013/04/16/just-start/) I built this blog.
    - travis encrypt --add -r githubusername/reponame OS_USERNAME=yourRackspaceUsername
    - travis encrypt --add -r githubusername/reponame OS_PASSWORD=yourRackspaceApikey
 
+#### Travis CI notifications on IRC
+ - TODO: Own a Freenode channel
+ - Update .travis.yml with notification settings http://about.travis-ci.org/docs/user/notifications/#IRC-notification
+
 #### Prose.io
- - I do all of my editing from http://prose.io/ . Nuff said.
-
-
-
-
-# Build after each new post:
-rbenv hash
-bundle install
-rake install
-rake generate
+ - Write posts & pages in http://prose.io/ . Nuff said.
 
 # Do to get updates from upstream octopress 
-git fetch upstream # Fetches any new changes from the original repository
-git merge upstream/master # Merges any changes fetched into your working files
+- `git fetch upstream` # Fetches any new changes from the original repository
+- `git merge upstream/master` # Merges any changes fetched into your working files
 
 
 
