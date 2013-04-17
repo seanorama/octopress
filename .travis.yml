@@ -6,6 +6,12 @@ language: ruby
 rvm:
 - 1.9.3
 - 1.9.2
+notifications:
+  irc:
+    - "irc.freenode.org##seano"
+  email:
+    recipients:
+      - seanorama+travisci@gmail.com
 install:
 - pip install python-swiftclient --use-mirrors --install-option="--user"
 script:
