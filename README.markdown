@@ -1,7 +1,21 @@
-## My weblog managed in Octopress hosted on Github, Travis CI, Prose.io & Rackspace Cloud Files w/ Akamai CDN
-
-This is a result of playing around and learning. I'll document the setup here eventually.
+## My weblog
 [![Build Status](https://travis-ci.org/seanorama/octopress.png?branch=master)](https://travis-ci.org/imathis/octopress)
+
+#### Code used:
+- [Octopress](http://octopress.org/): As the blogging framework. Generates static content from markup files.
+- [openstack/python-swiftclient](https://github.com/openstack/python-swiftclient): Push generated blog to Rackspace Cloud Files _(or other OpenStack providers)_
+
+#### Infrastructure on these services:
+- [Prose.io](http://prose.io/): Excellent editor of files in GitHub. Strong Markdown support.
+- [GitHub](https://github.com/seanorama/octopress/): Host the code
+- [Travis CI](https://travis-ci.org/seanorama/octopress/): Test & deploy from code to blog
+- [Rackspace Cloud Files w/ Akamai CDN](http://www.rackspace.co.uk/cloud-files/): Host the blog
+
+#### Infrastructure I maintain and require
+- **Nothing**: All I need is a web browser with access to github.com
+
+#### Why:
+A result of playing around and learning. I'll document the setup here eventually.
 
 ---
 ---
