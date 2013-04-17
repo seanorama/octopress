@@ -1,3 +1,12 @@
+## My weblog managed in Octopress hosted on Github, Travis CI, Prose.io & Rackspace Cloud Files w/ Akamai CDN
+
+This is a result of playing around and learning. I'll document the setup here eventually.
+[![Build Status](https://travis-ci.org/seanorama/octopress.png?branch=master)](https://travis-ci.org/imathis/octopress)
+
+---
+---
+---
+
 ## What is Octopress?
 
 Octopress is [Jekyll](https://github.com/mojombo/jekyll) blogging at its finest.
