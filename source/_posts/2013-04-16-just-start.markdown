@@ -11,5 +11,3 @@ categories:
 There are always those ideas that we think about but never start. For more than a decade, I've thought of writing in a public forum, such as a weblog.
 
 Today, I will "Just Start".
-
-Will sucks
