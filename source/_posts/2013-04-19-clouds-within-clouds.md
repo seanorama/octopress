@@ -7,9 +7,17 @@ published: false
 
 ---
 
-# Clouds within Clouds: Rackspace Private Cloud within Public Cloud! 
+# Clouds within Clouds: Rackspace Private Cloud within Public Cloud! Part 1.
 
-For play, you can build Rackspace Private Cloud on top of other Cloud infrastructures. Much easier and cheaper than getting tons of hardware lined up.
+I wanted to play with our, Rackspace, Private Cloud. At 1st I got some metal (physical servers) but dealing with them was a pain and I kept wanting more.
+
+Then I discovered that the infrastructure can existing on top of a Cloud Infrastructure. Less headache than lining hardware up, and with very little cost!
+
+For their own testing, the Private Cloud folks made this:
+
+It will look like this:
+- Several Rackspace Cloud Servers connected with Cloud Networks
+- OpenCenter installed to create & manage the Private Cloud Nova Cluster
 
 And the Private Cloud guys have [made it even easier](https://github.com/rcbops/opencenter-install-scripts) by providing scripts which will get the base infrastructure built for you within a Rackspace Public Cloud account _(though you could modify the scripts to work with other providers)_.
 
@@ -163,5 +171,4 @@ Workstation requirements:
 sudo apt-get update
 sudo apt-get install python-pip
  From a fresh Rackspace Cloud Server with Ubuntu 12.10:
- - 
- 
+ -
