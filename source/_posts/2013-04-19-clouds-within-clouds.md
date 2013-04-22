@@ -3,9 +3,13 @@ layout: post
 title: "Clouds within Clouds: Rackspace Private Cloud within Public Cloud!"
 comments: true
 categories: [education, rackspace, openstack]
-published: false
+published: true
 
 ---
+
+DRAFT!
+
+
 
 # Clouds within Clouds: Rackspace Private Cloud within Public Cloud! Part 1.
 
@@ -49,13 +53,13 @@ http://www.rackspace.com/knowledge_center/article/installing-python-novaclient-o
 4. Put those changes in place: `source ~/.bash_profile`
 5. Create your SSH key (with no passphrase): `mkdir ~/.ssh; chmod 700 ~/.ssh; ssh-keygen -t rsa`
 
-
 #### 3. Get 'opencenter-install-scripts'
 
 1. Using 'wget' & 'unzip' here, but feel free to use 'git':
 ```
 wget https://github.com/rcbops/opencenter-install-scripts/archive/master.zip
 unzip master.zip
+rm master.zip
 ```
 
 #### 4. Read the documentation fool!
@@ -105,70 +109,120 @@ ARGUMENTS:
 #### Build the infrastructure! An OpenCenter Cluster.
 
 1. Check out my sad empty Cloud Control Panel :(
-![Cloud Control Panel before OpenCenter](/images/Selection_043.bmp)
-2. Build the cluster. If you read the documentation above, then you know what it's doing!: `./opencenter-cluster.sh  --suffix=.seanroberts.org --password=YourCrazyPasswordHere --public-key=~/.ssh/id_rsa.pub --clients=5`
+![Cloud Control Panel before OpenCenter](http://i.imgur.com/a42HrzN.png)
+2. Build the cluster. If you read the documentation above, then you know what it's doing!: `./opencenter-cluster.sh  --suffix=.seanroberts.org --password=YourCrazyPasswordHere --network=192.168.0.0/24 --public-key=~/.ssh/id_rsa.pub --clients=5`
 3. Wait. This will take a while. I'm told faster Cloud Server builds are coming soon.
 4. While you are waiting, go check out your Control Panel. Here's mine:
-![Cloud Control Panel during OpenCenter](/images/Selection_043.png)
+![Cloud Control Panel during OpenCenter](http://i.imgur.com/2uSQxZK.png)
 5. When it's done, you'll see this output from the script:
+
 ```
 *** COMPLETE ***
 
 Run "export OPENCENTER_ENDPOINT=http://Y.Y.Y.Y:8080" to use the opencentercli
 Or connect to "http://X.X.X.X:3000" to manage via the opencenter-dashboard interface
 ```
-6. 
-![Cloud Control Panel during OpenCenter](/images/Selection_044.png)
 
+6. And this in your Cloud Control Panel:
+![Cloud Control Panel during OpenCenter](http://i.imgur.com/yyE96Dy.png)
+
+#### Quick note: SSH to your 
+
+If you want to access any of the servers, simply SSH to it's IP with the user root. Your key is there so you'll login automatically. 
+
+```
+$ ssh root@999.999.999.999
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-38-virtual x86_64)
+... text snipped ...
+root@c1-opencenter-server:~#
+```
 
 #### Build your Private Cloud with OpenCenter
 
 1. Open your web browser to the dashboard URL which the script gave you (the one ended in :3000). Welcome to the Rackspace Private Cloud Control Panel:
-![Cloud Control Panel during OpenCenter](/images/Selection_046.png)
+![Cloud Control Panel during OpenCenter](http://i.imgur.com/cczeJKT.png)
 2. What to do next is [documented in the Rackspace Knowledge Center](http://www.rackspace.com/knowledge_center/article/installing-rackspace-private-cloud-software#access-the-gui). But it's not the best documentation.
 3. So lets do this with pretty screenshots.
 
 
 3. Make the 1st node a Chef server. Read more about it [here](http://www.rackspace.com/knowledge_center/article/installing-rackspace-private-cloud-software#install-chef-server):
-![Cloud Control Panel during OpenCenter](/images/Selection_045.png)
-
-{% img [class names] /path/to/image [width] [height] [title text [alt text]] %}
+![Cloud Control Panel during OpenCenter](http://i.imgur.com/4waIdr7.png)
 
 4. Now the fun starts. Lets [Create your Nova Cluster](
 http://www.rackspace.com/knowledge_center/article/installing-rackspace-private-cloud-software#install-nova-cluster)
 
-Again 2 clicks:
-![Create Nova Cluster](/images/Selection_048.png)
+Step 1:
+* ![Create Nova Cluster](http://i.imgur.com/rVA6O6S.png)
 
-Then you get this:
-![Additional Input Required](/images/Selection_048.png)
+Step2:
+* Then you get this which needs better documentation:
+![Additional Input Required](http://i.imgur.com/2pSzfcE.png)
 
+* TODO: Document why I chose each:
+![Additional Input Required](http://i.imgur.com/hPTZ9Aq.png)
 
+Step3:
+![Step 3](http://i.imgur.com/CyF5Z6R.png)
 
-
-
-
-While you are waiting, go check
-3. Profit?
-
-#### That's it?
-
-Yep. The script goes off and builds your infrastructure!
+Step4:
+![Step 4](http://i.imgur.com/9sPAT7F.png)
 
 
 
+[Upload Glance Images](http://www.rackspace.com/knowledge_center/article/installing-rackspace-private-cloud-software#nova-cluster-images)
 
+![Imgur](http://i.imgur.com/r9GqCxV.png)
 
+#### Openstack installed
 
-Workstation requirements:
- - git
- - python
- - [pyrax](https://github.com/rackspace/pyrax#readme)
- - no
+It's done. OpenCenter did it's job. Now what? It's not clear from any of the documentation. Here's a start:
+1. In the OpenCenter Dashboard, note the name of your Infrastructure Node (from 'Step 3' above)
+2. Get it's 'ServiceNet' IP from your Rackspace Public Cloud Control Panel
+3. SSH: `ssh root@thehostname`
+4. Load your credentials for Nova: `source .novarc`
 
- 
- pip
-sudo apt-get update
-sudo apt-get install python-pip
- From a fresh Rackspace Cloud Server with Ubuntu 12.10:
- -
+#### Creating an instance in your Cloud!
+
+http://www.rackspace.com/knowledge_center/article/rackspace-private-cloud-software-creating-an-instance-in-the-cloud
+
+1. Generate an SSH Keypair. Save the output as 'admin-keypair.pem': `nova keypair-add admin-keypair`
+2. Update the Default Security Group
+```
+$ nova secgroup-add-rule default tcp 22 22 0.0.0.0/0
+$ nova secgroup-add-rule default icmp -1 -1 0.0.0.0/0
+```
+3. Create your first server instance!
+```
+# nova boot --key-name admin-keypair --image "precise" --flavor 1 n1
++-------------------------------------+--------------------------------------+
+| Property                            | Value                                |
++-------------------------------------+--------------------------------------+
+| OS-DCF:diskConfig                   | MANUAL                               |
+| OS-EXT-SRV-ATTR:host                | None                                 |
+| OS-EXT-SRV-ATTR:hypervisor_hostname | None                                 |
+| OS-EXT-SRV-ATTR:instance_name       | instance-00000005                    |
+| OS-EXT-STS:power_state              | 0                                    |
+| OS-EXT-STS:task_state               | scheduling                           |
+| OS-EXT-STS:vm_state                 | building                             |
+| accessIPv4                          |                                      |
+| accessIPv6                          |                                      |
+| adminPass                           | ywc5DjSD8JQj                         |
+| config_drive                        |                                      |
+| created                             | 2013-04-22T13:15:33Z                 |
+| flavor                              | m1.tiny                              |
+| hostId                              |                                      |
+| id                                  | 2e402876-2cd2-46e2-87fa-43d2f0837e97 |
+| image                               | precise                              |
+| key_name                            | admin-keypair                        |
+| metadata                            | {}                                   |
+| name                                | n1                                   |
+| progress                            | 0                                    |
+| security_groups                     | [{u'name': u'default'}]              |
+| status                              | BUILD                                |
+| tenant_id                           | 70b55e0f65554df9b83f8c7f71a78df4     |
+| updated                             | 2013-04-22T13:15:34Z                 |
+| user_id                             | 3804247c053749e8b305abfe7a028d4d     |
++-------------------------------------+--------------------------------------+
+
+After a few minutes, you should be able to login directly with SSH or using:
+`# nova ssh n1 -i admin-keypair.pem`
