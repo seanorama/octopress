@@ -68,7 +68,7 @@ To help me [Just Start Writing](/blog/2013/04/16/just-start/) I built this blog.
 
 #### Configure Travis CI
  - Do steps 1 & 2 of the [http://about.travis-ci.org/docs/user/getting-started/](Travis CI Getting Started documentation)
- - Update your .travis.yml to look like this, but exclude the ' - secure' entries.
+ - Update your .travis.yml to look like this, but exclude the ' - secure' entries: https://github.com/seanorama/octopress/blob/master/.travis.yml
  - Add your own credentials for Travis by executing these commands (update with your githubusername/reponame, Rackspace username, Rackspace apikey)
    - travis encrypt --add -r githubusername/reponame OS_USERNAME=yourRackspaceUsername
    - travis encrypt --add -r githubusername/reponame OS_PASSWORD=yourRackspaceApikey
@@ -97,5 +97,3 @@ To help me [Just Start Writing](/blog/2013/04/16/just-start/) I built this blog.
 Prose:
   - Activate and edit with: http://prose.io/
   - Implement the "nice settings" from http://darvin.github.io/blog/2013/01/13/Prose_Octopress_TravisIO/
-
-Prose:
