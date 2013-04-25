@@ -3,7 +3,7 @@ layout: post
 title: "Clouds within Clouds: Rackspace Private Cloud within Public Cloud!"
 comments: true
 categories: [education, rackspace, openstack]
-published: true
+published: false
 
 ---
 
