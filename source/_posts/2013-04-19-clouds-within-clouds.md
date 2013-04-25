@@ -46,7 +46,7 @@ Don't have somewhere to run the scripts from? Then do this:
 
 1. New Ubuntu 12.10 instance in your cloud provider of choice (Rackspace for me).
 2. Install python-pip & unzip: `sudo apt-get update; sudo apt-get install python-pip unzip`
-3. Install rackspace-novaclient: `sudo pip install rackspace-novaclient`
+3. Install rackspace-novaclient: `sudo pip install python-novaclient`
 4. Configure your Rackspace credentials for the Nova client
 http://www.rackspace.com/knowledge_center/article/installing-python-novaclient-on-linux-and-mac-os
 3. Configure nova for authentication. See the 'Environment Variables' section [here](http://www.rackspace.com/knowledge_center/article/installing-python-novaclient-on-linux-and-mac-os)
