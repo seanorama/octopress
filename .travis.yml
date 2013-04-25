@@ -11,7 +11,7 @@ notifications:
     - "irc.freenode.org##seano"
   email:
     recipients:
-      - seanorama+travisci@gmail.com
+      - "seanorama+travisci@gmail.com"
 install:
 - pip install python-swiftclient --use-mirrors --install-option="--user"
 script:
